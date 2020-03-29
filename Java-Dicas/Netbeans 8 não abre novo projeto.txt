@@ -1,0 +1,13 @@
+O netbeans 8.x não funciona em jdk superiores.
+
+- instale a jdk 8 (geralmente o jdk 8 é intalado na pasta: /usr/lib/jvm/java-8-openjdk-amd64;
+- vá na pasta onde o netbeans 8 foi instalado.
+- entre na pasta /etc;
+- faça uma cópia de segurança do arquivo netbeans.conf (netbeans.conf.bck);
+- edite o arquivo e no quase no final onde encontrar a linha:
+
+netbeans_jdkhome="/usr"
+
+substitua por:
+
+netbeans_jdkhome="/usr/lib/jvm/java-8-openjdk-amd64"

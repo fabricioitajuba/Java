@@ -1,0 +1,8 @@
+Configurando o método principal no swing
+
+- Clicar com o botão direito em cima do projeto e vá em:
+
+-> properties -> Run
+
+em Main Class, clique em "Browse..." e escolha o método principal e "OK"
+

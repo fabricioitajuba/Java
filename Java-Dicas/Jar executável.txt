@@ -1,0 +1,16 @@
+no main manifest attribute
+
+
+Depois de gerar o arquivo .jar:
+
+- torne-o executável
+- abra-o com o "gerenciador de pacotes"
+- edite o arquivo, abra a pasta META-INF e edite o arquivo "MANIFEST.MF"
+- insira no final do arquivo a linha:
+
+Main-Class: "nome da classe principal"
+
+Se não souber o nome da classe principal, clique com o botão direito em cima do projeto -> propriedades -> Run -> Main Class:
+
+ex:
+Main-Class: teste1.teste.Teste

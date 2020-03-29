@@ -1,0 +1,14 @@
+-- Java swing 
+
+- inicializando o form no meio da tela:
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                //new OlaMundoJava().setVisible(true);
+                OlaMundoJava form = new OlaMundoJava();
+                //inicializa o formulario no meio da tela
+                form.setLocationRelativeTo(null);
+                form.setVisible(true);    
+            }
+        });

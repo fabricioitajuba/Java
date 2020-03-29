@@ -1,0 +1,20 @@
+- Carregando um novo form:
+
+        FormAjudaHora form = new FormAjudaHora();
+        form.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+        //form.setTitle("Hora e data atuais");
+        form.setLocationRelativeTo(null);
+        form.setResizable(false);
+        form.setVisible(true);
+
+
+- Como abrir outro JFrame ao clicar em um JButton?
+
+SeuJFrame frame = new SeuJFrame();
+frame.setVisible(true);
+
+
+- Como faz se vc quiser voltar para o jframe anterior atravez de um botão voltar. fazendo assim o jframe que vc abriu fechar sem que tudo se feche?
+
+jFrameAtual.dispose();
+new NovoFrame().setVisible(true);

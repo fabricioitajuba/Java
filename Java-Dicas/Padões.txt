@@ -1,0 +1,2 @@
+Classes - primeira letra sempre maiúscula
+Pacotes - todas as letras em minúscula

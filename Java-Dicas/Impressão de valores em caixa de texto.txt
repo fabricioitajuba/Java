@@ -1,0 +1,5 @@
+//System.out.println(String.format("A distância percorrida´foi de: %.3f Km", distanciaPercorrida));
+
+        txtEspiras.setText(String.valueOf(n));
+        txtComprimento.setText(String.valueOf(l));
+        txtPrecisao.setText(String.format("%.2f", p)); //precisão de 2 casas
