@@ -1,0 +1,2 @@
+Precisa do driver "rxtx-2.1-7-bins-r2" localizado na pasta:
+/Java-Drivers.
