@@ -1,0 +1,8 @@
+SE - Standard Edition - Edição padrão - Desktop
+EE - Enterprise Edition - Edição empresarial - Com mais recursos
+ME - Micro Edition - Edição pequena - Mobile
+
+Todas elas são divididas em duas partes:
+
+JRE - Máquina virtual para rodar as versões feitas no JDK
+JDK - Para desenvolvedores
