@@ -1,0 +1,12 @@
+-- Installing Java OpenJDK
+
+$ sudo apt update
+$ sudo apt install openjdk-8-jdk
+$ java -version
+
+-- Installing Netbeans IDE
+$ sudo snap install netbeans --classic
+
+-- Installing Eclipse
+$ sudo apt install default-jre
+$ sudo snap install --classic eclipse
