@@ -11,8 +11,10 @@ package classes;
  */
 public class Indutor1 {
  
+    //Atributos
     public float L, D, Dcon, n, l, p;
 	
+    //Métodos
     public float diametro_indutor(float D){
         D=D/10;
         return D;
