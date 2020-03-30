@@ -1,0 +1,8 @@
+- Método construtor do objeto (ex):
+
+Calculos calc = new Calculos(); //Será criado o objeto calc
+
+
+- Método destruidor do objeto:
+
+calc = null;

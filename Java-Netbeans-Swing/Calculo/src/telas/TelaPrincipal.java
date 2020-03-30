@@ -132,6 +132,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         txtSoma.setText(String.valueOf(calc.C));
         
+        calc = null;
+        
     }//GEN-LAST:event_btnSomaActionPerformed
 
     private void btnSubtracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubtracaoActionPerformed
@@ -143,7 +145,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         calc.C = calc.subtracao(calc.A, calc.B);
         
-        txtSubtracao.setText(String.valueOf(calc.C));        
+        txtSubtracao.setText(String.valueOf(calc.C));  
+        
+        calc = null;
     }//GEN-LAST:event_btnSubtracaoActionPerformed
 
     /**

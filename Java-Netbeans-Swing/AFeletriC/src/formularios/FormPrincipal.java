@@ -37,6 +37,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         MenuArquivoSair = new javax.swing.JMenuItem();
         MenuEletronica = new javax.swing.JMenu();
         MenuEletronicaIndutor1 = new javax.swing.JMenuItem();
+        MenuEletronicaTrPar = new javax.swing.JMenuItem();
         MenuEletrica = new javax.swing.JMenu();
         MenuAjuda = new javax.swing.JMenu();
         MenuAjudaHora = new javax.swing.JMenuItem();
@@ -70,6 +71,14 @@ public class FormPrincipal extends javax.swing.JFrame {
             }
         });
         MenuEletronica.add(MenuEletronicaIndutor1);
+
+        MenuEletronicaTrPar.setText("Trimmer em paralelo");
+        MenuEletronicaTrPar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuEletronicaTrParActionPerformed(evt);
+            }
+        });
+        MenuEletronica.add(MenuEletronicaTrPar);
 
         MenuBarra.add(MenuEletronica);
 
@@ -156,6 +165,15 @@ public class FormPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_MenuEletronicaIndutor1ActionPerformed
 
+    private void MenuEletronicaTrParActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuEletronicaTrParActionPerformed
+        
+        FormTrPar form = new FormTrPar();
+        form.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+        form.setLocationRelativeTo(null);
+        form.setResizable(false);
+        form.setVisible(true);
+    }//GEN-LAST:event_MenuEletronicaTrParActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -205,6 +223,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu MenuEletrica;
     private javax.swing.JMenu MenuEletronica;
     private javax.swing.JMenuItem MenuEletronicaIndutor1;
+    private javax.swing.JMenuItem MenuEletronicaTrPar;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

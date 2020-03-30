@@ -198,6 +198,8 @@ public class FormIndutor1 extends javax.swing.JFrame {
         txtEspiras.setText(String.format("%.2f", indutor.n));
         txtComprimento.setText(String.format("%.2f", indutor.l));
         txtPrecisao.setText(String.format("%.2f", indutor.p));
+        
+        indutor = null;
 
     }//GEN-LAST:event_btnCalculaActionPerformed
 
