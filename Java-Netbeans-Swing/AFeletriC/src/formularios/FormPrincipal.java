@@ -38,6 +38,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         MenuEletronica = new javax.swing.JMenu();
         MenuEletronicaIndutor1 = new javax.swing.JMenuItem();
         MenuEletronicaTrPar = new javax.swing.JMenuItem();
+        MenuEletronicaAttenR = new javax.swing.JMenuItem();
         MenuEletrica = new javax.swing.JMenu();
         MenuAjuda = new javax.swing.JMenu();
         MenuAjudaHora = new javax.swing.JMenuItem();
@@ -79,6 +80,14 @@ public class FormPrincipal extends javax.swing.JFrame {
             }
         });
         MenuEletronica.add(MenuEletronicaTrPar);
+
+        MenuEletronicaAttenR.setText("Redes atenuadoras resistivas");
+        MenuEletronicaAttenR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuEletronicaAttenRActionPerformed(evt);
+            }
+        });
+        MenuEletronica.add(MenuEletronicaAttenR);
 
         MenuBarra.add(MenuEletronica);
 
@@ -174,6 +183,15 @@ public class FormPrincipal extends javax.swing.JFrame {
         form.setVisible(true);
     }//GEN-LAST:event_MenuEletronicaTrParActionPerformed
 
+    private void MenuEletronicaAttenRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuEletronicaAttenRActionPerformed
+
+        FormAttenR form = new FormAttenR();
+        form.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+        form.setLocationRelativeTo(null);
+        form.setResizable(false);
+        form.setVisible(true);
+    }//GEN-LAST:event_MenuEletronicaAttenRActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -222,6 +240,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar MenuBarra;
     private javax.swing.JMenu MenuEletrica;
     private javax.swing.JMenu MenuEletronica;
+    private javax.swing.JMenuItem MenuEletronicaAttenR;
     private javax.swing.JMenuItem MenuEletronicaIndutor1;
     private javax.swing.JMenuItem MenuEletronicaTrPar;
     private javax.swing.JLabel jLabel1;
