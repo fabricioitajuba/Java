@@ -5,6 +5,7 @@
  */
 package formularios;
 
+import classes.AttenR;
 import javax.swing.ImageIcon;
 
 /**
@@ -38,6 +39,18 @@ public class FormAttenR extends javax.swing.JFrame {
         imagem2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         imagem1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        lblR1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        lblR3 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        lblR2 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        lblR4 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Redes atenuadoras resistivas");
@@ -51,6 +64,11 @@ public class FormAttenR extends javax.swing.JFrame {
         jLabel3.setText("Atenuação desejada [dB]: ");
 
         btnCalcula.setText("Calcula");
+        btnCalcula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalculaActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Parâmetros de saída:");
@@ -64,6 +82,22 @@ public class FormAttenR extends javax.swing.JFrame {
         });
 
         imagem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/AttenR.jpg"))); // NOI18N
+
+        jLabel5.setText("R1=");
+
+        jLabel7.setText("[Ω]");
+
+        jLabel6.setText("R2=");
+
+        jLabel8.setText("[Ω]");
+
+        jLabel9.setText("R3=");
+
+        jLabel10.setText("[Ω]");
+
+        jLabel11.setText("R4=");
+
+        jLabel12.setText("[Ω]");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,7 +127,32 @@ public class FormAttenR extends javax.swing.JFrame {
                         .addGap(52, 52, 52)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblR1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblR2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel8)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblR3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblR4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel12)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -104,7 +163,7 @@ public class FormAttenR extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(imagem2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(imagem1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -119,7 +178,25 @@ public class FormAttenR extends javax.swing.JFrame {
                     .addComponent(btnCalcula))
                 .addGap(35, 35, 35)
                 .addComponent(jLabel4)
-                .addGap(88, 88, 88))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblR1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblR3, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblR2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblR4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel11))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -152,6 +229,50 @@ public class FormAttenR extends javax.swing.JFrame {
             imagem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("")));
         }        
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void btnCalculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculaActionPerformed
+
+        boolean teste;
+        String opcao = "";
+        
+        AttenR rede = new AttenR();
+        
+        rede.Atten = Integer.parseInt(txtAtenuacao.getText());
+        rede.R = Integer.parseInt(txtCarga.getText());        
+        
+        opcao = jComboBox1.getSelectedItem().toString();
+        
+        if ("Rede-Pi".equals(opcao)){            
+            rede.Rede_Pi(rede.Atten, rede.R);
+            teste = true;
+        }
+        else if ("Rede-T".equals(opcao)){
+            rede.Rede_T(rede.Atten, rede.R);
+            teste = true;
+        }
+        else if ("Ponte-T".equals(opcao)){
+            rede.Ponte_T(rede.Atten, rede.R);
+            teste = true;
+        }
+        else {
+            teste = false;
+        }        
+        
+        if (teste == true){
+            lblR1.setText(String.format("%.2f", rede.R1));
+            lblR2.setText(String.format("%.2f", rede.R2));
+            lblR3.setText(String.format("%.2f", rede.R3));
+            lblR4.setText(String.format("%.2f", rede.R4));
+        }
+        else{
+            lblR1.setText("");
+            lblR2.setText("");
+            lblR3.setText("");
+            lblR4.setText("");
+        }        
+        
+        rede = null;
+    }//GEN-LAST:event_btnCalculaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,9 +316,21 @@ public class FormAttenR extends javax.swing.JFrame {
     private javax.swing.JLabel imagem2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblR1;
+    private javax.swing.JLabel lblR2;
+    private javax.swing.JLabel lblR3;
+    private javax.swing.JLabel lblR4;
     private javax.swing.JTextField txtAtenuacao;
     private javax.swing.JTextField txtCarga;
     // End of variables declaration//GEN-END:variables

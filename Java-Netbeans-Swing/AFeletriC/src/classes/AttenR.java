@@ -12,7 +12,7 @@ package classes;
 public class AttenR {
     
     public int R, Atten;
-    Object[] object;
+    public float R1, R2, R3, R4;
     
     float calcula_tensao(int Atten)
     {        
@@ -28,13 +28,13 @@ public class AttenR {
         float V, P, S;
         
         V = calcula_tensao(Atten);        
-        P=(R*(1+V))/(1-V);
+        P=(float) (R*(1+V))/(1-V);
         S=(float) ((2*Math.pow(R,2)*P)/(Math.pow(P,2)-Math.pow(R,2)));
 
-        object[0] = P;//R1
-        object[1] = S;//R2
-        object[2] = P;//R3
-        object[3] = 0;
+        R1 = P;
+        R2 = S;
+        R3 = P;
+        R4 = 0;
     }
     
     public void Rede_T(int Atten, int R)
@@ -45,10 +45,10 @@ public class AttenR {
         S=(R*(1-V))/(1+V);
         P=(float) ((Math.pow(R,2)-Math.pow(S,2))/(2*S));
         
-        object[0] = S;//R1
-        object[1] = P;//R2
-        object[2] = S;//R3	
-        object[3] = 0;
+        R1 = S;//R1
+        R2 = P;//R2
+        R3 = S;//R3	
+        R4 = 0;
     }
     
     public void Ponte_T(int Atten, int R)
@@ -59,10 +59,10 @@ public class AttenR {
         S=(R*(1-V))/V;
         P=(float) (Math.pow(R,2)/S);
         
-        object[0] = S;//R1
-        object[1] = R;//R2
-        object[2] = R;//R3
-        object[3] = P;//R4
+        R1 = S;//R1
+        R2 = R;//R2
+        R3 = R;//R3
+        R4 = P;//R4
     }    
     
 }
