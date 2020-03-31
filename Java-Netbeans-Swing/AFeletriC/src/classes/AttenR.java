@@ -34,6 +34,7 @@ public class AttenR {
         object[0] = P;//R1
         object[1] = S;//R2
         object[2] = P;//R3
+        object[3] = 0;
     }
     
     public void Rede_T(int Atten, int R)
@@ -46,7 +47,8 @@ public class AttenR {
         
         object[0] = S;//R1
         object[1] = P;//R2
-        object[2] = S;//R3		
+        object[2] = S;//R3	
+        object[3] = 0;
     }
     
     public void Ponte_T(int Atten, int R)

@@ -1,0 +1,5 @@
+lblimg - é o nome da jLabel
+
+ImageIcon icon= new ImageIcon("src/imagens/n1.png");
+icon.setImage(icon.getImage().getScaledInstance(lblimg.getWidth(), lblimg.getHeight(), 1));
+lblimg.setIcon(icon);
