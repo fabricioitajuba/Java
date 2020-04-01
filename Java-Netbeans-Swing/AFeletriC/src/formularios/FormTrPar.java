@@ -178,16 +178,16 @@ public class FormTrPar extends javax.swing.JFrame {
         
         TrPar trimmer = new TrPar();
         
-        trimmer.Fmin = Float.parseFloat(txtFmin.getText());
-        trimmer.Fmax = Float.parseFloat(txtFmax.getText());
-        trimmer.CVmin = Float.parseFloat(txtCVmin.getText());
-        trimmer.CVmax = Float.parseFloat(txtCVmax.getText());
+        trimmer.setFmin(Float.parseFloat(txtFmin.getText()));
+        trimmer.setFmax(Float.parseFloat(txtFmax.getText()));
+        trimmer.setCVmin(Float.parseFloat(txtCVmin.getText()));
+        trimmer.setCVmax(Float.parseFloat(txtCVmax.getText()));
         
-        trimmer.Ct = trimmer.calcula_trimmer(trimmer.Fmax, trimmer.Fmin);
-        trimmer.L = trimmer.calcula_indutor(trimmer.CVmax, trimmer.Fmin, trimmer.Ct);
+        trimmer.setCt(trimmer.calcula_trimmer(trimmer.getFmax(), trimmer.getFmin()));
+        trimmer.setL(trimmer.calcula_indutor(trimmer.getCVmax(), trimmer.getFmin(), trimmer.getCt()));
         
-        txtCt.setText(String.format("%.2f", trimmer.Ct));
-        txtIndutor.setText(String.format("%.2f", trimmer.L));
+        txtCt.setText(String.format("%.2f", trimmer.getCt()));
+        txtIndutor.setText(String.format("%.2f", trimmer.getL()));
         
         trimmer = null;
     }//GEN-LAST:event_btnCalculoActionPerformed

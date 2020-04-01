@@ -12,7 +12,55 @@ package classes;
 public class TrPar {
     
     //Atributos
-    public float Fmax, Fmin, CVmax, CVmin, Ct, L;
+    private float Fmax, Fmin, CVmax, CVmin, Ct, L;
+
+    public float getFmax() {
+        return Fmax;
+    }
+
+    public void setFmax(float Fmax) {
+        this.Fmax = Fmax;
+    }
+
+    public float getFmin() {
+        return Fmin;
+    }
+
+    public void setFmin(float Fmin) {
+        this.Fmin = Fmin;
+    }
+
+    public float getCVmax() {
+        return CVmax;
+    }
+
+    public void setCVmax(float CVmax) {
+        this.CVmax = CVmax;
+    }
+
+    public float getCVmin() {
+        return CVmin;
+    }
+
+    public void setCVmin(float CVmin) {
+        this.CVmin = CVmin;
+    }
+
+    public float getCt() {
+        return Ct;
+    }
+
+    public void setCt(float Ct) {
+        this.Ct = Ct;
+    }
+
+    public float getL() {
+        return L;
+    }
+
+    public void setL(float L) {
+        this.L = L;
+    }
     
     //Métodos    
     public float calcula_trimmer(float Fmax, float Fmin){
