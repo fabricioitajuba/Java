@@ -184,20 +184,17 @@ public class FormIndutor1 extends javax.swing.JFrame {
         
         Indutor1 indutor = new Indutor1();
 
-        indutor.L = Float.parseFloat(txtIndutancia.getText());
-	indutor.D = Float.parseFloat(txtDiametro.getText());
-	indutor.Dcon = Float.parseFloat(txtDiametroCondutor.getText());
+        indutor.setL(Float.parseFloat(txtIndutancia.getText()));
+        indutor.setD(Float.parseFloat(txtDiametro.getText()));
+        indutor.setDcon(Float.parseFloat(txtDiametroCondutor.getText()));
+       
+        indutor.setN(indutor.calcula_nespiras(indutor.getL(), indutor.getD(), indutor.getDcon()));
+        indutor.setC(indutor.calcula_comprimento(indutor.getDcon(), indutor.getN()));
+        indutor.setP(indutor.calcula_precisao(indutor.getD(), indutor.getC()));
         
-        indutor.D = indutor.diametro_indutor(indutor.D);
-        indutor.Dcon = indutor.diametro_condutor(indutor.Dcon);
-        
-        indutor.n = indutor.calcula_nespiras(indutor.L, indutor.D, indutor.Dcon);
-        indutor.l = indutor.calcula_comprimento(indutor.Dcon, indutor.n);
-        indutor.p = indutor.calcula_precisao(indutor.D, indutor.l);
-        
-        txtEspiras.setText(String.format("%.2f", indutor.n));
-        txtComprimento.setText(String.format("%.2f", indutor.l));
-        txtPrecisao.setText(String.format("%.2f", indutor.p));
+        txtEspiras.setText(String.format("%.2f", indutor.getN()));
+        txtComprimento.setText(String.format("%.2f", indutor.getC()));
+        txtPrecisao.setText(String.format("%.2f", indutor.getP()));
         
         indutor = null;
 

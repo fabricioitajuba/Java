@@ -12,32 +12,72 @@ package classes;
 public class Indutor1 {
  
     //Atributos
-    public float L, D, Dcon, n, l, p;
-	
-    //Métodos
-    public float diametro_indutor(float D){
-        D=D/10;
+    private float L, D, Dcon, N, C, P;
+
+    public float getL() {
+        return L;
+    }
+
+    public void setL(float L) {
+        this.L = L;
+    }
+
+    public float getD() {
         return D;
     }
-    
-    public float diametro_condutor(float Dcon){
-        Dcon=Dcon/10;
+
+    public void setD(float D) {
+        this.D = D;
+    }
+
+    public float getDcon() {
         return Dcon;
     }
 
-    public float calcula_nespiras(float L, float D, float Dcon){               
-        n=(float) Math.ceil((100*Dcon*L+Math.sqrt(Math.pow(10,4)*Math.pow(Dcon,2)*Math.pow(L,2)+180*Math.pow(D,3)*L))/(2*Math.pow(D,2)));
-        return n;
+    public void setDcon(float Dcon) {
+        this.Dcon = Dcon;
+    }
+
+    public float getN() {
+        return N;
+    }
+
+    public void setN(float N) {
+        this.N = N;
+    }
+
+    public float getC() {
+        return C;
+    }
+
+    public void setC(float C) {
+        this.C = C;
+    }
+
+    public float getP() {
+        return P;
+    }
+
+    public void setP(float P) {
+        this.P = P;
+    }
+        
+    //Métodos
+    public float calcula_nespiras(float L, float D, float Dcon){    
+        D=D/10;
+        Dcon=Dcon/10;
+        N=(float) Math.ceil((100*Dcon*L+Math.sqrt(Math.pow(10,4)*Math.pow(Dcon,2)*Math.pow(L,2)+180*Math.pow(D,3)*L))/(2*Math.pow(D,2)));
+        return N;
     }
     
-    public float calcula_comprimento(float Dcon, float n){
-        l=Dcon*n;
-        return l*10;
+    public float calcula_comprimento(float Dcon, float N){
+        C=Dcon*N;
+        return C;
     }    
     
-    public float calcula_precisao(float D, float l){
-        p=D/l;
-        return p*10;
+    public float calcula_precisao(float D, float C){
+        P=D/C;
+        return P;
     }                        
     
 }
