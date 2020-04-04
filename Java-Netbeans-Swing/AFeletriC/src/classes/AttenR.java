@@ -11,8 +11,56 @@ package classes;
  */
 public class AttenR {
     
-    public int R, Atten;
-    public float R1, R2, R3, R4;
+    private int R, Atten;
+    private float R1, R2, R3, R4;
+
+    public int getR() {
+        return R;
+    }
+
+    public void setR(int R) {
+        this.R = R;
+    }
+
+    public int getAtten() {
+        return Atten;
+    }
+
+    public void setAtten(int Atten) {
+        this.Atten = Atten;
+    }
+
+    public float getR1() {
+        return R1;
+    }
+
+    public void setR1(float R1) {
+        this.R1 = R1;
+    }
+
+    public float getR2() {
+        return R2;
+    }
+
+    public void setR2(float R2) {
+        this.R2 = R2;
+    }
+
+    public float getR3() {
+        return R3;
+    }
+
+    public void setR3(float R3) {
+        this.R3 = R3;
+    }
+
+    public float getR4() {
+        return R4;
+    }
+
+    public void setR4(float R4) {
+        this.R4 = R4;
+    }
     
     float calcula_tensao(int Atten)
     {        

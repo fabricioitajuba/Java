@@ -237,21 +237,21 @@ public class FormAttenR extends javax.swing.JFrame {
         
         AttenR rede = new AttenR();
         
-        rede.Atten = Integer.parseInt(txtAtenuacao.getText());
-        rede.R = Integer.parseInt(txtCarga.getText());        
+        rede.setAtten(Integer.parseInt(txtAtenuacao.getText()));
+        rede.setR(Integer.parseInt(txtCarga.getText()));
         
         opcao = jComboBox1.getSelectedItem().toString();
         
         if ("Rede-Pi".equals(opcao)){            
-            rede.Rede_Pi(rede.Atten, rede.R);
+            rede.Rede_Pi(rede.getAtten(), rede.getR());
             teste = true;
         }
         else if ("Rede-T".equals(opcao)){
-            rede.Rede_T(rede.Atten, rede.R);
+            rede.Rede_T(rede.getAtten(), rede.getR());
             teste = true;
         }
         else if ("Ponte-T".equals(opcao)){
-            rede.Ponte_T(rede.Atten, rede.R);
+            rede.Ponte_T(rede.getAtten(), rede.getR());
             teste = true;
         }
         else {
@@ -259,10 +259,10 @@ public class FormAttenR extends javax.swing.JFrame {
         }        
         
         if (teste == true){
-            lblR1.setText(String.format("%.2f", rede.R1));
-            lblR2.setText(String.format("%.2f", rede.R2));
-            lblR3.setText(String.format("%.2f", rede.R3));
-            lblR4.setText(String.format("%.2f", rede.R4));
+            lblR1.setText(String.format("%.2f", rede.getR1()));
+            lblR2.setText(String.format("%.2f", rede.getR2()));
+            lblR3.setText(String.format("%.2f", rede.getR3()));
+            lblR4.setText(String.format("%.2f", rede.getR4()));
         }
         else{
             lblR1.setText("");

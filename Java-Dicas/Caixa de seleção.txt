@@ -1,0 +1,27 @@
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+
+        String opcao = "";
+        opcao = jComboBox1.getSelectedItem().toString();
+        
+        if ("Rede-Pi".equals(opcao)){
+            ImageIcon icon = new ImageIcon("src/imagens/Pi.jpg");
+            icon.setImage(icon.getImage().getScaledInstance(imagem2.getWidth(), imagem2.getHeight(), 1));
+            imagem2.setIcon(icon);
+            icon = null;
+        }
+        else if ("Rede-T".equals(opcao)){
+            ImageIcon icon = new ImageIcon("src/imagens/T.jpg");
+            icon.setImage(icon.getImage().getScaledInstance(imagem2.getWidth(), imagem2.getHeight(), 1));
+            imagem2.setIcon(icon);
+            icon = null;            
+        }
+        else if ("Ponte-T".equals(opcao)){
+            ImageIcon icon = new ImageIcon("src/imagens/Ponte-T.jpg");
+            icon.setImage(icon.getImage().getScaledInstance(imagem2.getWidth(), imagem2.getHeight(), 1));
+            imagem2.setIcon(icon);
+            icon = null;            
+        }
+        else {
+            imagem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("")));
+        }        
+    }   

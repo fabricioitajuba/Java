@@ -1,0 +1,25 @@
+# no mysql:
+- Criar o banco e a tabela
+
+# no java netbeans:
+
+- Criar um projeto: ex ProjetoJavaVp;
+
+- Aba "Serviços", Banco de Dados, Nova conexão, Driver "Java DB".
+
+- em "Servidor MySQL...", Iniciar, "preencher os dados necessários"
+
+- após a conexão com o MySQL, "Servidor MySQL...", escolher o banco de dados e "conectar";
+
+- Aba "Projetos", novo pacote ex: "form", novo pacote: ex: "bean".
+
+- no pacote "form", "Novo", "Outros", Filtro: "amostra", "form de amostra mestre/detalhe";
+
+- nome da classe ex: FormCliente;
+
+- em "Tabela Mestre":
+--"Conexão de banco de dados" selecionar a conexão;
+--"Tabela de banco de dados" selecionar a tabela;
+-- Escolher quais dados serão trabalhados, Próximo, Finalizar;
+-- Copiar a classe criada para dentro do pacote "bean";
+ 
