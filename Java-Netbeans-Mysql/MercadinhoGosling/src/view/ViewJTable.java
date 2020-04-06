@@ -44,6 +44,24 @@ public class ViewJTable extends javax.swing.JFrame {
             });
         }
     }
+    
+    
+    public void readJTableForDesc(String desc) {
+
+        DefaultTableModel modelo = (DefaultTableModel) jTProdutos.getModel();
+        modelo.setNumRows(0);
+        ProdutoDAO pdao = new ProdutoDAO();
+
+        for (Produto p : pdao.readForDesc(desc)) {
+
+            modelo.addRow(new Object[]{
+                p.getId(),
+                p.getDescricao(),
+                p.getQtd(),
+                p.getPreco()
+            });
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,11 +82,14 @@ public class ViewJTable extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        txtBuscaDesc = new javax.swing.JTextField();
+        btnBusca = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTProdutos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         jLabel1.setText("DESCRIÇAO");
@@ -121,19 +142,30 @@ public class ViewJTable extends javax.swing.JFrame {
             }
         });
 
+        btnBusca.setText("Busca");
+        btnBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(28, 28, 28)
                         .addComponent(jButton2)
                         .addGap(33, 33, 33)
-                        .addComponent(jButton3))
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtBuscaDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(btnBusca))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -165,7 +197,9 @@ public class ViewJTable extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(txtBuscaDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBusca))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -337,6 +371,12 @@ public class ViewJTable extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void btnBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaActionPerformed
+
+        readJTableForDesc(txtBuscaDesc.getText());
+        
+    }//GEN-LAST:event_btnBuscaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -373,6 +413,7 @@ public class ViewJTable extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBusca;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -383,6 +424,7 @@ public class ViewJTable extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTProdutos;
+    private javax.swing.JTextField txtBuscaDesc;
     private javax.swing.JTextField txtDesc;
     private javax.swing.JTextField txtPreco;
     private javax.swing.JTextField txtQtd;

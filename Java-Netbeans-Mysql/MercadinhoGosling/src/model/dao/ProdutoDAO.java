@@ -79,6 +79,41 @@ public class ProdutoDAO {
         
         return produtos;
     }
+
+    //Procurar produto específico
+    public List<Produto> readForDesc(String desc){
+
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;        
+        ResultSet rs = null;
+        
+        List<Produto> produtos = new ArrayList<>();
+        
+        try {
+            
+            stmt = con.prepareStatement("SELECT * FROM produto WHERE descricao LIKE ?");
+            stmt.setString(1, "%"+desc+"%");
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                
+                Produto produto = new Produto();
+                
+                produto.setId(rs.getInt("id"));
+                produto.setDescricao(rs.getString("descricao"));
+                produto.setQtd(rs.getInt("qtd"));
+                produto.setPreco(rs.getDouble("preco"));
+                produtos.add(produto);
+            }
+                    
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        
+        return produtos;
+    }
     
     //Atualizar dados
     public void update(Produto p){
