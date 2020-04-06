@@ -1,0 +1,13 @@
+String valor1 = txtValor1.getText().trim();
+String valor2 = txtValor2.getText().trim();
+String valor3 = txtValor3.getText().trim();
+
+DefaultTableModel val = (DefaultTableModel) jtb1.getModel();
+
+val.addRow(new String [] {valor1, valor2, valor3});
+
+txtValor1.setText("");
+txtValor1.setText("");
+txtValor1.setText("");
+
+txtValor1.requestFocus();
