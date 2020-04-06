@@ -147,9 +147,16 @@ public class ProdutoDAO {
         
         try {
             stmt = con.prepareStatement("DELETE FROM produto WHERE id = ?");
-            stmt.setInt(1, p.getId());
-            
+            stmt.setInt(1, p.getId());            
             stmt.executeUpdate();       
+            
+            //Organizar Id
+            stmt = con.prepareStatement("SET @count = 0");            
+            stmt.executeUpdate();
+            stmt = con.prepareStatement("UPDATE `produto` SET `produto`.`id` = @count:= @count + 1");            
+            stmt.executeUpdate();
+            stmt = con.prepareStatement("ALTER TABLE `dbmercadinho`.`produto` AUTO_INCREMENT = 1");            
+            stmt.executeUpdate();            
             
             JOptionPane.showMessageDialog(null, "Excluido com sucesso!");
             
@@ -158,6 +165,5 @@ public class ProdutoDAO {
         } finally{
             ConnectionFactory.closeConnection(con, stmt);
         }        
-    }        
-    
+    }                   
 }
