@@ -8,6 +8,8 @@ package form;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
 import java.io.File;
@@ -40,6 +42,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         btnGerar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtValor1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtValor2 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtValor3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerando PDF");
@@ -55,21 +63,52 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Valor 1:");
+
+        jLabel2.setText("Valor 2:");
+
+        jLabel3.setText("Valor 3:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(163, 163, 163)
-                .addComponent(btnGerar)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtValor1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtValor2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(btnGerar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtValor3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(223, Short.MAX_VALUE)
-                .addComponent(btnGerar)
-                .addGap(43, 43, 43))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtValor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtValor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGerar))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtValor3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -79,10 +118,38 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btnGerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarActionPerformed
         // TODO add your handling code here:
         Document document = new Document();
+        String documento = "documento.pdf";//nome do arquivo
+        
         try {
-            PdfWriter.getInstance(document, new FileOutputStream("documento.pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream(documento));
             document.open();
-            document.add(new Paragraph("PDF Gerado!"));
+            
+            //Adiciona uma linha
+            document.add(new Paragraph("PDF Gerado!!!"));
+            document.add(new Paragraph("   "));
+            Paragraph p = new Paragraph("Tabela gerada");
+            p.setAlignment(1);
+            document.add(p);
+            p = new Paragraph("   ");
+            document.add(p);
+            
+            //Cria uma tabela
+            PdfPTable table = new PdfPTable(3);
+            PdfPCell cel1 = new PdfPCell(new Paragraph("Valor 1"));
+            PdfPCell cel2 = new PdfPCell(new Paragraph("Valor 2"));
+            PdfPCell cel3 = new PdfPCell(new Paragraph("Valor 3"));
+            table.addCell(cel1);
+            table.addCell(cel2);
+            table.addCell(cel3);
+            //Insere valores na tabela
+            cel1 = new PdfPCell(new Paragraph(txtValor1.getText()));
+            cel2 = new PdfPCell(new Paragraph(txtValor2.getText()));
+            cel3 = new PdfPCell(new Paragraph(txtValor3.getText()));
+            table.addCell(cel1);
+            table.addCell(cel2);
+            table.addCell(cel3);
+            document.add(table);            
+            
         } catch (FileNotFoundException | DocumentException ex) {
             System.out.println("Error:"+ex);
         } finally{
@@ -91,7 +158,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         //Abrir o PDF gerado
         try {
-            Desktop.getDesktop().open(new File("documento.pdf"));
+            Desktop.getDesktop().open(new File(documento));
         } catch (IOException ex) {
             System.out.println("Error:"+ex);
         }
@@ -135,5 +202,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGerar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField txtValor1;
+    private javax.swing.JTextField txtValor2;
+    private javax.swing.JTextField txtValor3;
     // End of variables declaration//GEN-END:variables
 }
