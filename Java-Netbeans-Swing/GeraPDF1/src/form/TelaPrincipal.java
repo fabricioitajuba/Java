@@ -7,6 +7,7 @@ package form;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -136,8 +137,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
             //Cria uma tabela
             PdfPTable table = new PdfPTable(3);
             PdfPCell cel1 = new PdfPCell(new Paragraph("Valor 1"));
+            cel1.setHorizontalAlignment(Element.ALIGN_CENTER);
             PdfPCell cel2 = new PdfPCell(new Paragraph("Valor 2"));
+            cel2.setHorizontalAlignment(Element.ALIGN_CENTER);
             PdfPCell cel3 = new PdfPCell(new Paragraph("Valor 3"));
+            cel3.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(cel1);
             table.addCell(cel2);
             table.addCell(cel3);
