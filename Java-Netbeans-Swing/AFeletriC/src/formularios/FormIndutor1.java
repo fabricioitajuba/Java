@@ -49,6 +49,7 @@ public class FormIndutor1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cálculo do indutor com núcleo de ar");
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/AFtroniC.png")).getImage());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("- Entre com os seguintes dados:");

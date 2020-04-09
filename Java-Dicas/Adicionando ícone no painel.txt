@@ -1,0 +1,12 @@
+    public FormPrincipal() {
+        initComponents();
+        this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/AFtroniC.png")).getImage());
+    }
+
+ou
+
+No form:
+Propriedades->iconImage->...->Código personalizado
+
+acrescentar a linha:
+new javax.swing.ImageIcon(getClass().getResource("/imagens/AFtroniC.png")).getImage()

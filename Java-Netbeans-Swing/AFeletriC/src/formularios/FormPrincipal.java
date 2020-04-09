@@ -5,6 +5,7 @@
  */
 package formularios;
 
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -20,6 +21,7 @@ public class FormPrincipal extends javax.swing.JFrame {
      */
     public FormPrincipal() {
         initComponents();
+        //this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/AFtroniC.png")).getImage());
     }
 
     /**
@@ -47,7 +49,9 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("AFeletriC - Cálculos elétricos e eletrônicos");
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/imagens/AFtroniC.png")).getImage());
         setName(""); // NOI18N
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setText("AFeletriC - Cálculos elétricos e eletrônicos");
@@ -143,13 +147,15 @@ public class FormPrincipal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void MenuAjudaSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAjudaSobreActionPerformed
 
         JOptionPane.showMessageDialog(null, "AFeletriC - versão 1.0\n"
                 + "Cálculos elétricos e eletrônicos\n"
-                + "Autor: Fabrício de lima Ribeiro\n"
+                + "Autor: Fabrício de Lima Ribeiro - Engenheiro Eletrônico\n"
+                + "PY4FLR/PX4C1428\n"
                 + "Data: 26/03/2020");
 
     }//GEN-LAST:event_MenuAjudaSobreActionPerformed
@@ -264,4 +270,5 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuEletronicaTrPar;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
 }
