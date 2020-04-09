@@ -54,34 +54,20 @@ public class CCC {
         this.Lideal = Lideal;
     }
 
-    //Comprimento máximo ideal do cabo:
-    public float comprimento_maximo_ideal(float F, float Fator){
+    //Comprimento máximo e mínimo ideal do cabo:
+    public void comprimento_ideal(float F, float Fator){
         
-        float Lreal, Laux;
+        float Lreal;
         
         Lreal=(300/(2*F))*Fator;
-	Laux=Lreal;
+        Comp_max=0;
 		
-	while(Lreal < Lideal)
+	while(Comp_max < Lideal)
 	{
-            Lreal+=Laux;
+            Comp_max+=Lreal;
 	}
                 
-        return Lreal;
+        Comp_min=Comp_max-Lreal;
     }
     
-    //Comprimento mínimo ideal do cabo:
-    public float comprimento_minimo_ideal(float Lreal){
-        
-        float Laux;
-        
-        Laux=Lreal;
-	while(Lreal < Lideal)
-	{
-            Lreal+=Laux;
-	}        
-        Lreal-=Laux;
-        
-        return Lreal;
-    }
 }

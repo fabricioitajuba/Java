@@ -188,8 +188,7 @@ public class FormCCC extends javax.swing.JFrame {
             coaxial.setFator((float) 0.82);
         }
         
-        coaxial.setComp_max(coaxial.comprimento_maximo_ideal(coaxial.getF(), coaxial.getFator()));
-        coaxial.setComp_min(coaxial.comprimento_minimo_ideal(coaxial.getComp_max()));
+        coaxial.comprimento_ideal(coaxial.getF(), coaxial.getFator());
         
         lblCompmax.setText(String.format("%.2f", coaxial.getComp_max()));
         lblCompmin.setText(String.format("%.2f", coaxial.getComp_min()));
