@@ -25,9 +25,18 @@ public class main {
         System.out.println(teste);
         teste = bancoSQLite.criarTabela("banco.db", "tbl_pessoa");
         System.out.println(teste);
-        teste = bancoSQLite.insert("banco.db", 2, "Fabiano", 43);
+        teste = bancoSQLite.insert("banco.db", 1, "Fabricio", 40);
         System.out.println(teste);
-        
+        teste = bancoSQLite.insert("banco.db", 2, "Angiene", 47);   
+        System.out.println(teste);        
+        teste = bancoSQLite.insert("banco.db", 3, "Caio", 5);        
+        System.out.println(teste);
+        teste = bancoSQLite.insert("banco.db", 4, "Fabiano", 43);        
+        System.out.println(teste);        
+        teste = bancoSQLite.update("banco.db", "tbl_pessoa", 1, "Fabricio", 44);
+        System.out.println(teste);
+        teste = bancoSQLite.delete("banco.db", "tbl_pessoa", 4);
+        System.out.println(teste);        
     }
     
 }

@@ -44,6 +44,7 @@ public class BancoSQLite {
         }
     }
     
+    //Criar banco de dados
     public boolean criarBanco(String banco){
     
         boolean conectou;
@@ -84,7 +85,7 @@ public class BancoSQLite {
     public boolean criarTabela(String banco, String tabela){
 
         boolean conectar, criou=false;
-        String sql = "CREATE TABLE IF NOT EXISTS " + tabela + " (id integer PRIMARY KEY, nome text NOT NULL, idade integer);";
+        String sql = "CREATE TABLE IF NOT EXISTS "+tabela+" (id integer PRIMARY KEY, nome text NOT NULL, idade integer);";
         
         conectar = conectar(banco);
         
@@ -103,6 +104,7 @@ public class BancoSQLite {
         return criou;
     }
     
+    //Insere dados
     public boolean insert(String banco, int id, String nome, int idade){
         
         boolean conectar, inseriu=false;
@@ -136,5 +138,73 @@ public class BancoSQLite {
         }    
         return inseriu;                
     }
+    
+    //Atualiza registros
+    public boolean update(String banco, String tabela, int id, String nome, int idade){
+        
+        boolean conectar, alterou=false;
+        
+        conectar = conectar(banco);
+        
+        if(conectar == true){
+
+            String sql = "UPDATE "+tabela+" SET nome = ?, idade = ? WHERE id = ?";
+
+             PreparedStatement preparedStatement = criarPreparedStatement(sql);
+
+             try{
+                 preparedStatement.setString(1, nome);            
+                 preparedStatement.setInt(2, idade);
+                 preparedStatement.setInt(3, id);
+                 int resultado = preparedStatement.executeUpdate();
+                 alterou = true;
+             }catch(SQLException e){
+                 //Mensagem de erro na criação da tabela
+             }finally{
+                 if(preparedStatement != null){
+                     try {
+                         preparedStatement.close();
+                     } catch (SQLException ex) {
+                         //
+                     }
+                 }
+                 desconectar();
+             }            
+        }    
+        return alterou;                
+    }    
+    
+    //Deleta registros
+    public boolean delete(String banco, String tabela, int id){
+        
+        boolean conectar, alterou=false;
+        
+        conectar = conectar(banco);
+        
+        if(conectar == true){
+
+            String sql = "DELETE FROM  "+tabela+" WHERE id = ?";
+
+             PreparedStatement preparedStatement = criarPreparedStatement(sql);
+
+             try{
+                 preparedStatement.setInt(1, id);
+                 int resultado = preparedStatement.executeUpdate();
+                 alterou = true;
+             }catch(SQLException e){
+                 //Mensagem de erro na criação da tabela
+             }finally{
+                 if(preparedStatement != null){
+                     try {
+                         preparedStatement.close();
+                     } catch (SQLException ex) {
+                         //
+                     }
+                 }
+                 desconectar();
+             }            
+        }    
+        return alterou;                
+    }      
     
 }
