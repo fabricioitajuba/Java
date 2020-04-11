@@ -81,9 +81,10 @@ public class BancoSQLite {
     }    
     
     //Cria tabela
-    public boolean criarTabela(String banco, String sql){
+    public boolean criarTabela(String banco, String tabela){
 
         boolean conectar, criou=false;
+        String sql = "CREATE TABLE IF NOT EXISTS " + tabela + " (id integer PRIMARY KEY, nome text NOT NULL, idade integer);";
         
         conectar = conectar(banco);
         
@@ -101,4 +102,39 @@ public class BancoSQLite {
         }    
         return criou;
     }
+    
+    public boolean insert(String banco, int id, String nome, int idade){
+        
+        boolean conectar, inseriu=false;
+        
+        conectar = conectar(banco);
+        
+        if(conectar == true){
+
+            String sql = "INSERT INTO tbl_pessoa (id, nome, idade) VALUES(?,?,?);";
+
+             PreparedStatement preparedStatement = criarPreparedStatement(sql);
+
+             try{
+                 preparedStatement.setInt(1, id);            
+                 preparedStatement.setString(2, nome);
+                 preparedStatement.setInt(3, idade);
+                 int resultado = preparedStatement.executeUpdate();
+                 inseriu = true;
+             }catch(SQLException e){
+                 //Mensagem de erro na criação da tabela
+             }finally{
+                 if(preparedStatement != null){
+                     try {
+                         preparedStatement.close();
+                     } catch (SQLException ex) {
+                         //
+                     }
+                 }
+                 desconectar();
+             }            
+        }    
+        return inseriu;                
+    }
+    
 }

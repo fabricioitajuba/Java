@@ -22,8 +22,11 @@ public class main {
         BancoSQLite bancoSQLite = new BancoSQLite();
         
         teste = bancoSQLite.criarBanco("banco.db");
-        teste = bancoSQLite.criarTabela("banco.db", "CREATE TABLE IF NOT EXISTS tbl_pessoa (id integer PRIMARY KEY, nome text NOT NULL, idade integer);");
-
+        System.out.println(teste);
+        teste = bancoSQLite.criarTabela("banco.db", "tbl_pessoa");
+        System.out.println(teste);
+        teste = bancoSQLite.insert("banco.db", 2, "Fabiano", 43);
+        System.out.println(teste);
         
     }
     
