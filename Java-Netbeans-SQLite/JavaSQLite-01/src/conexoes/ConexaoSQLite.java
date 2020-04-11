@@ -7,7 +7,9 @@ package conexoes;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -31,7 +33,8 @@ public class ConexaoSQLite {
         System.out.println("Conectou!!!");
         return true;
     }
-
+    
+    //Criar os statements para nossos sqls serem executados
     public boolean desconectar(){
 
         try{
@@ -46,4 +49,25 @@ public class ConexaoSQLite {
         return true;
     }
     
+    public Statement criarStatement(){
+    
+        try{
+            return this.conexao.createStatement();
+        }catch(SQLException e){
+            return null;
+        }
+    }
+    
+    public PreparedStatement criarPreparedStatement(String sql){
+    
+        try{
+            return this.conexao.prepareStatement(sql);
+        }catch(SQLException e){
+            return null;
+        }
+    }    
+    
+    public Connection getConexao(){
+        return this.conexao;
+    }
 }
