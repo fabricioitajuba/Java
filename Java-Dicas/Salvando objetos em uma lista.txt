@@ -1,0 +1,41 @@
+ProdutoDAO.java
+
+public List<Produto> read(){
+
+    List<Produto> produtos = new ArrayList<>();
+    Produto produto = new Produto();
+
+    produto.setId(1);
+    produto.setDescricao("Teste1");
+    produto.setQtd(12);
+    produto.Preco(10.2);
+
+    produtos.add(produto);
+
+    return produtos;
+
+}
+
+//////////////////////////
+
+Ex: recuperando valores em uma JTable
+
+public void readJTable(){
+
+    DefaultTableModel modelo = (DefaultTableModel) jTProdutos.getModel();
+
+    ProdutoDAO pdao = new ProdutoDAO();
+    
+    for(Produto p: pdao.read()){
+
+        modelo.addRow(new Object[]{
+            p.getId(),
+            p.lgetDescricao(),
+            p.getQtd(),
+            p.getPreco()
+        });
+
+    }
+
+}
+

@@ -23,20 +23,53 @@ public class main {
         
         teste = bancoSQLite.criarBanco("banco.db");
         System.out.println(teste);
+        
         teste = bancoSQLite.criarTabela("banco.db", "tbl_pessoa");
         System.out.println(teste);
-        teste = bancoSQLite.insert("banco.db", 1, "Fabricio", 40);
+        
+        bancoSQLite.setId(1);
+        bancoSQLite.setNome("Fabricio");
+        bancoSQLite.setIdade(40);
+        teste = bancoSQLite.insert("banco.db", "tbl_pessoa");
         System.out.println(teste);
-        teste = bancoSQLite.insert("banco.db", 2, "Angiene", 47);   
+
+        bancoSQLite.setId(2);
+        bancoSQLite.setNome("Angiene");
+        bancoSQLite.setIdade(47);        
+        teste = bancoSQLite.insert("banco.db", "tbl_pessoa");   
         System.out.println(teste);        
-        teste = bancoSQLite.insert("banco.db", 3, "Caio", 5);        
+        
+        bancoSQLite.setId(3);
+        bancoSQLite.setNome("Caio");
+        bancoSQLite.setIdade(5);        
+        teste = bancoSQLite.insert("banco.db", "tbl_pessoa");        
         System.out.println(teste);
-        teste = bancoSQLite.insert("banco.db", 4, "Fabiano", 43);        
+
+        bancoSQLite.setId(4);
+        bancoSQLite.setNome("Fabiano");
+        bancoSQLite.setIdade(43);        
+        teste = bancoSQLite.insert("banco.db", "tbl_pessoa");        
         System.out.println(teste);        
-        teste = bancoSQLite.update("banco.db", "tbl_pessoa", 1, "Fabricio", 44);
+        
+        bancoSQLite.setId(5);
+        bancoSQLite.setNome("Fiica");
+        bancoSQLite.setIdade(75);        
+        teste = bancoSQLite.insert("banco.db", "tbl_pessoa");        
+        System.out.println(teste);         
+
+        bancoSQLite.setId(1);
+        bancoSQLite.setNome("Fabricio");
+        bancoSQLite.setIdade(44);        
+        teste = bancoSQLite.update("banco.db", "tbl_pessoa");
         System.out.println(teste);
-        teste = bancoSQLite.delete("banco.db", "tbl_pessoa", 4);
-        System.out.println(teste);        
+        
+        bancoSQLite.setId(4);
+        teste = bancoSQLite.delete("banco.db", "tbl_pessoa");        
+        System.out.println(teste);    
+        
+        bancoSQLite.setId(5);
+        teste = bancoSQLite.buscaDado("banco.db", "tbl_pessoa");
+        System.out.println("id=" + bancoSQLite.getId() + " nome=" + bancoSQLite.getNome() + " idade=" + bancoSQLite.getIdade());
     }
     
 }

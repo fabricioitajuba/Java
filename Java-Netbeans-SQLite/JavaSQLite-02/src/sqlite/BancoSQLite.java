@@ -8,6 +8,7 @@ package sqlite;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -17,6 +18,33 @@ import java.sql.Statement;
  */
 public class BancoSQLite {
     
+    private int Id, Idade;
+    private String Nome;
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        this.Id = id;
+    }
+
+    public int getIdade() {
+        return Idade;
+    }
+
+    public void setIdade(int idade) {
+        this.Idade = idade;
+    }
+
+    public String getNome() {
+        return Nome;
+    }
+
+    public void setNome(String nome) {
+        this.Nome = nome;
+    }
+        
     private Connection conexao;
     
     //Conecta a um banco e cria se não existir
@@ -84,7 +112,7 @@ public class BancoSQLite {
     //Cria tabela
     public boolean criarTabela(String banco, String tabela){
 
-        boolean conectar, criou=false;
+        boolean conectar, ok=false;
         String sql = "CREATE TABLE IF NOT EXISTS "+tabela+" (id integer PRIMARY KEY, nome text NOT NULL, idade integer);";
         
         conectar = conectar(banco);
@@ -94,35 +122,35 @@ public class BancoSQLite {
             try{
                 Statement stmt = criarStatement();
                 stmt.execute(sql);
-                criou = true;
+                ok = true;
             }catch(SQLException e){
                 //Mensagem de erro na criação da tabela
             }finally{
                 desconectar();
             }
         }    
-        return criou;
+        return ok;
     }
     
     //Insere dados
-    public boolean insert(String banco, int id, String nome, int idade){
+    public boolean insert(String banco, String tabela){
         
-        boolean conectar, inseriu=false;
+        boolean conectar, ok=false;
         
         conectar = conectar(banco);
         
         if(conectar == true){
 
-            String sql = "INSERT INTO tbl_pessoa (id, nome, idade) VALUES(?,?,?);";
+            String sql = "INSERT INTO "+tabela+" (id, nome, idade) VALUES(?,?,?);";
 
              PreparedStatement preparedStatement = criarPreparedStatement(sql);
 
              try{
-                 preparedStatement.setInt(1, id);            
-                 preparedStatement.setString(2, nome);
-                 preparedStatement.setInt(3, idade);
+                 preparedStatement.setInt(1, Id);            
+                 preparedStatement.setString(2, Nome);
+                 preparedStatement.setInt(3, Idade);
                  int resultado = preparedStatement.executeUpdate();
-                 inseriu = true;
+                 ok = true;
              }catch(SQLException e){
                  //Mensagem de erro na criação da tabela
              }finally{
@@ -136,13 +164,13 @@ public class BancoSQLite {
                  desconectar();
              }            
         }    
-        return inseriu;                
+        return ok;                
     }
     
     //Atualiza registros
-    public boolean update(String banco, String tabela, int id, String nome, int idade){
+    public boolean update(String banco, String tabela){
         
-        boolean conectar, alterou=false;
+        boolean conectar, ok=false;
         
         conectar = conectar(banco);
         
@@ -153,11 +181,11 @@ public class BancoSQLite {
              PreparedStatement preparedStatement = criarPreparedStatement(sql);
 
              try{
-                 preparedStatement.setString(1, nome);            
-                 preparedStatement.setInt(2, idade);
-                 preparedStatement.setInt(3, id);
+                 preparedStatement.setString(1, Nome);            
+                 preparedStatement.setInt(2, Idade);
+                 preparedStatement.setInt(3, Id);
                  int resultado = preparedStatement.executeUpdate();
-                 alterou = true;
+                 ok = true;
              }catch(SQLException e){
                  //Mensagem de erro na criação da tabela
              }finally{
@@ -171,13 +199,13 @@ public class BancoSQLite {
                  desconectar();
              }            
         }    
-        return alterou;                
+        return ok;                
     }    
     
     //Deleta registros
-    public boolean delete(String banco, String tabela, int id){
+    public boolean delete(String banco, String tabela){
         
-        boolean conectar, alterou=false;
+        boolean conectar, ok=false;
         
         conectar = conectar(banco);
         
@@ -188,9 +216,9 @@ public class BancoSQLite {
              PreparedStatement preparedStatement = criarPreparedStatement(sql);
 
              try{
-                 preparedStatement.setInt(1, id);
+                 preparedStatement.setInt(1, Id);
                  int resultado = preparedStatement.executeUpdate();
-                 alterou = true;
+                 ok = true;
              }catch(SQLException e){
                  //Mensagem de erro na criação da tabela
              }finally{
@@ -204,7 +232,50 @@ public class BancoSQLite {
                  desconectar();
              }            
         }    
-        return alterou;                
+        return ok;                
     }      
+    
+    //Busca registro
+    public boolean buscaDado(String banco, String tabela){
+        
+        boolean conectar, ok=false;
+        
+        conectar = conectar(banco);
+        
+        if(conectar == true){
+
+            ResultSet resultSet = null;
+            PreparedStatement preparedStatement = null;
+
+            String query = "SELECT * FROM "+tabela+" WHERE id = ?;";
+
+            try{
+                int idPessoa = 10;
+
+                preparedStatement = criarPreparedStatement(query);
+                preparedStatement.setInt(1,Id);
+
+                resultSet = preparedStatement.executeQuery();
+
+                while(resultSet.next()){
+                    Id = resultSet.getInt("id");
+                    Nome = resultSet.getString("nome");
+                    Idade = resultSet.getInt("idade");
+                }
+            }catch (SQLException e){
+                ok=false;
+            }finally{
+                try{
+                    resultSet.close();
+                    preparedStatement.close();
+                    desconectar();
+                }catch(SQLException ex){
+                    ex.printStackTrace();
+                    ok=false;
+                }
+            }                       
+        }    
+        return ok;                
+    }        
     
 }
