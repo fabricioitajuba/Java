@@ -8,7 +8,6 @@ package principal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import sqlite.BancoSQLite;
-import sqlite.TabelaDado;
 
 /**
  *
@@ -85,9 +84,9 @@ public class Main {
         System.out.println("id=" + bancoSQLite.getId() + " nome=" + bancoSQLite.getNome() + " idade=" + bancoSQLite.getIdade());
 
         //Busca registros
-        ArrayList<TabelaDado> listaDePessoas = new ArrayList<>();               //#
+        ArrayList<BancoSQLite> bancoSQLites = new ArrayList<>();                //#
         
-        for(TabelaDado p: bancoSQLite.buscaDados("banco.db", "tbl_pessoa")){
+        for(BancoSQLite p: bancoSQLite.buscaDados("banco.db", "tbl_pessoa")){
 
             System.out.println(Arrays.toString(new Object[]{
                 p.getId(),
@@ -95,14 +94,14 @@ public class Main {
                 p.getIdade(),
             }));
             
-            listaDePessoas.add(p);
+            bancoSQLites.add(p);
         }        
         
         System.out.println("\n");                                               //#
-        for(int i=0; i<listaDePessoas.size(); i++){                             //#
-            System.out.println("Id: " + listaDePessoas.get(i).getId());         //#   
-            System.out.println("Nome: " + listaDePessoas.get(i).getNome());     //#   
-            System.out.println("Idade: " + listaDePessoas.get(i).getIdade());   //# 
+        for(int i=0; i<bancoSQLites.size(); i++){                               //#
+            System.out.println("Id: " + bancoSQLites.get(i).getId());           //#   
+            System.out.println("Nome: " + bancoSQLites.get(i).getNome());       //#   
+            System.out.println("Idade: " + bancoSQLites.get(i).getIdade());     //# 
             System.out.println("\n");                                           //#
         }        
 

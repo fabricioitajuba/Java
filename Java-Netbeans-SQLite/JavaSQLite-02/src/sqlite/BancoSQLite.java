@@ -280,12 +280,60 @@ public class BancoSQLite {
         return ok;                
     }        
     
+//    //Busca registros e salva em uma lista
+//    public List<TabelaDado> buscaDados(String banco, String tabela){
+//        
+//        boolean conectar, ok=false;
+//        
+//        List<TabelaDado> tabelaDados = new ArrayList<>();
+//        
+//        conectar = conectar(banco);
+//        
+//        if(conectar == true){
+//
+//            ResultSet resultSet = null;
+//            Statement statement = null;
+//
+//            String query = "SELECT * FROM "+tabela;
+//
+//            statement = criarStatement();
+//
+//            try{
+//                resultSet = statement.executeQuery(query);
+//
+//                while(resultSet.next()){
+//                    
+//                    TabelaDado tabelaDado = new TabelaDado();    
+//                    
+//                    tabelaDado.setId(resultSet.getInt("id"));
+//                    tabelaDado.setNome(resultSet.getString("nome"));
+//                    tabelaDado.setIdade(resultSet.getInt("idade"));
+//                    
+//                    tabelaDados.add(tabelaDado);
+//                }
+//                //ok=true;
+//            }catch (SQLException e){
+//                //ok=false;
+//            }finally{
+//                try{
+//                    resultSet.close();
+//                    statement.close();
+//                    desconectar();
+//                }catch(SQLException ex){
+//                    //ok=false;
+//                }
+//            }                                              
+//        }    
+//        //return ok;  
+//        return tabelaDados;
+//    }     
+ 
     //Busca registros e salva em uma lista
-    public List<TabelaDado> buscaDados(String banco, String tabela){
+    public List<BancoSQLite> buscaDados(String banco, String tabela){
         
         boolean conectar, ok=false;
         
-        List<TabelaDado> tabelaDados = new ArrayList<>();
+        List<BancoSQLite> tabelas = new ArrayList<>();
         
         conectar = conectar(banco);
         
@@ -303,13 +351,13 @@ public class BancoSQLite {
 
                 while(resultSet.next()){
                     
-                    TabelaDado tabelaDado = new TabelaDado();    
+                    BancoSQLite bancoSQLite = new BancoSQLite();    
                     
-                    tabelaDado.setId(resultSet.getInt("id"));
-                    tabelaDado.setNome(resultSet.getString("nome"));
-                    tabelaDado.setIdade(resultSet.getInt("idade"));
+                    bancoSQLite.setId(resultSet.getInt("id"));
+                    bancoSQLite.setNome(resultSet.getString("nome"));
+                    bancoSQLite.setIdade(resultSet.getInt("idade"));
                     
-                    tabelaDados.add(tabelaDado);
+                    tabelas.add(bancoSQLite);
                 }
                 //ok=true;
             }catch (SQLException e){
@@ -325,7 +373,7 @@ public class BancoSQLite {
             }                                              
         }    
         //return ok;  
-        return tabelaDados;
-    }     
-        
+        return tabelas;
+    }         
+    
 }
