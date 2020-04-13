@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -46,6 +48,8 @@ public class BancoSQLite {
     }
         
     private Connection conexao;
+    
+    //DadosTabela dadosTabela = new DadosTabela();
     
     //Conecta a um banco e cria se não existir
     public boolean conectar(String banco){
@@ -250,8 +254,6 @@ public class BancoSQLite {
             String query = "SELECT * FROM "+tabela+" WHERE id = ?;";
 
             try{
-                int idPessoa = 10;
-
                 preparedStatement = criarPreparedStatement(query);
                 preparedStatement.setInt(1,Id);
 
@@ -278,4 +280,52 @@ public class BancoSQLite {
         return ok;                
     }        
     
+    //Busca registros e salva em uma lista
+    public List<TabelaDado> buscaDados(String banco, String tabela){
+        
+        boolean conectar, ok=false;
+        
+        List<TabelaDado> tabelaDados = new ArrayList<>();
+        
+        conectar = conectar(banco);
+        
+        if(conectar == true){
+
+            ResultSet resultSet = null;
+            Statement statement = null;
+
+            String query = "SELECT * FROM "+tabela;
+
+            statement = criarStatement();
+
+            try{
+                resultSet = statement.executeQuery(query);
+
+                while(resultSet.next()){
+                    
+                    TabelaDado tabelaDado = new TabelaDado();    
+                    
+                    tabelaDado.setId(resultSet.getInt("id"));
+                    tabelaDado.setNome(resultSet.getString("nome"));
+                    tabelaDado.setIdade(resultSet.getInt("idade"));
+                    
+                    tabelaDados.add(tabelaDado);
+                }
+                //ok=true;
+            }catch (SQLException e){
+                //ok=false;
+            }finally{
+                try{
+                    resultSet.close();
+                    statement.close();
+                    desconectar();
+                }catch(SQLException ex){
+                    //ok=false;
+                }
+            }                                              
+        }    
+        //return ok;  
+        return tabelaDados;
+    }     
+        
 }

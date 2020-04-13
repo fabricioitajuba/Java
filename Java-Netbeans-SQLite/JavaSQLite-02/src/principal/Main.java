@@ -5,13 +5,15 @@
  */
 package principal;
 
+import java.util.Arrays;
 import sqlite.BancoSQLite;
+import sqlite.TabelaDado;
 
 /**
  *
  * @author fabricio
  */
-public class main {
+public class Main {
 
     /**
      * @param args the command line arguments
@@ -70,6 +72,18 @@ public class main {
         bancoSQLite.setId(5);
         teste = bancoSQLite.buscaDado("banco.db", "tbl_pessoa");
         System.out.println("id=" + bancoSQLite.getId() + " nome=" + bancoSQLite.getNome() + " idade=" + bancoSQLite.getIdade());
+
+        
+        for(TabelaDado p: bancoSQLite.buscaDados("banco.db", "tbl_pessoa")){
+
+            System.out.println(Arrays.toString(new Object[]{
+                p.getId(),
+                p.getNome(),
+                p.getIdade(),
+            }));
+
+        }        
+
     }
     
 }

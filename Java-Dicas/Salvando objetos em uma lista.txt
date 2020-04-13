@@ -1,40 +1,38 @@
-ProdutoDAO.java
+//Classe Pessoa
+public class Pessoa{
 
-public List<Produto> read(){
+    private String nome;
+    private int idade;
 
-    List<Produto> produtos = new ArrayList<>();
-    Produto produto = new Produto();
-
-    produto.setId(1);
-    produto.setDescricao("Teste1");
-    produto.setQtd(12);
-    produto.setPreco(10.2);
-
-    produtos.add(produto);
-
-    return produtos;
+    "criar getters and setters"
 
 }
 
-//////////////////////////
+//Método principal
+public class Main{
 
-Ex: recuperando valores em uma JTable
+    public static void manin(String[] args){
 
-public void readJTable(){
+        ArrayList<Pessoa> listaDePessoas = new ArrayList<>();
 
-    DefaultTableModel modelo = (DefaultTableModel) jTProdutos.getModel();
+        Pessoa bruno = new Pessoa();
+        Pessoa jurubeba = new Pessoa();
 
-    ProdutoDAO pdao = new ProdutoDAO();
+        bruno.setNome("Bruno Lopes Chagas");
+        bruno.setIdade(55);
+
+        jurubeba.setNome("Jurubeba pouco leite");
+        jurubeba.setIdade(99);
+
+        listaDePessoas.add(bruno);
+        listaDePessoas.add(jurubeba);
+
+        for(int i=0; i<listaDePessoas.size(); i++){
+            System.out.println("Nome: " + listaDePessoas.get(i).getNome());   
+            System.out.println("Idade: " + listaDePessoas.get(i).getIdade()); 
+            System.out.println("\n"); 
+        }
     
-    for(Produto p: pdao.read()){
-
-        modelo.addRow(new Object[]{
-            p.getId(),
-            p.getDescricao(),
-            p.getQtd(),
-            p.getPreco()
-        });
-
     }
 
 }
