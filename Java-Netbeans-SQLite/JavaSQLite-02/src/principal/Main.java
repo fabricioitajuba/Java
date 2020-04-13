@@ -5,6 +5,7 @@
  */
 package principal;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import sqlite.BancoSQLite;
 import sqlite.TabelaDado;
@@ -73,6 +74,7 @@ public class Main {
         teste = bancoSQLite.buscaDado("banco.db", "tbl_pessoa");
         System.out.println("id=" + bancoSQLite.getId() + " nome=" + bancoSQLite.getNome() + " idade=" + bancoSQLite.getIdade());
 
+        ArrayList<TabelaDado> listaDePessoas = new ArrayList<>();
         
         for(TabelaDado p: bancoSQLite.buscaDados("banco.db", "tbl_pessoa")){
 
@@ -81,7 +83,14 @@ public class Main {
                 p.getNome(),
                 p.getIdade(),
             }));
-
+            
+            listaDePessoas.add(p);
+        }        
+        
+        System.out.println("\n"); 
+        for(int i=0; i<listaDePessoas.size(); i++){
+            System.out.println("Nome: " + listaDePessoas.get(i).getNome());   
+            System.out.println("Idade: " + listaDePessoas.get(i).getIdade()); 
         }        
 
     }
