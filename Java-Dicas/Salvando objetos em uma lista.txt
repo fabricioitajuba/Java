@@ -8,7 +8,7 @@ public List<Produto> read(){
     produto.setId(1);
     produto.setDescricao("Teste1");
     produto.setQtd(12);
-    produto.Preco(10.2);
+    produto.setPreco(10.2);
 
     produtos.add(produto);
 
@@ -30,7 +30,7 @@ public void readJTable(){
 
         modelo.addRow(new Object[]{
             p.getId(),
-            p.lgetDescricao(),
+            p.getDescricao(),
             p.getQtd(),
             p.getPreco()
         });

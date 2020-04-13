@@ -1,0 +1,55 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package principal;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author fabricio
+ */
+public class Main {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+
+        //Só aceita objetos
+        ArrayList<String> nomes = new ArrayList<>();
+        nomes.add("Carlos");
+        nomes.add("Alexandre");
+        nomes.add("Pereira");
+        nomes.add("Camacho");
+        System.out.println(nomes.toString());
+
+        System.out.println(nomes.get(0));
+        System.out.println(nomes.get(2));
+
+        //Retorna o tamanho do vetor
+        System.out.println(nomes.size());
+        
+        //Retorna a posição do dado se não existir, retorna -1
+        System.out.println(nomes.indexOf("Pereira"));        
+        System.out.println(nomes.indexOf("Ana"));        
+        
+        //Verifica se o vetor está vazio
+        System.out.println(nomes.isEmpty());//Retorna false
+        
+        //Faz pesquisa no vetor
+        System.out.println(nomes.contains("Pereira"));//Retorna true     
+        System.out.println(nomes.contains("Ana"));//Retorna false     
+        
+        nomes.remove(1);
+        nomes.remove("Pereira");
+        System.out.println(nomes.toString());
+
+        nomes.clear();
+        System.out.println(nomes.toString());        
+        
+    }
+    
+}

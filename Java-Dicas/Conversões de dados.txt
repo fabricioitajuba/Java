@@ -1,0 +1,17 @@
+-Converter de string para inteiro:
+int teste = Interger.parseInt("27");
+
+-Converter de string para double:
+double teste = Double.parseDouble("3.5");
+
+-Converter de string para boolean
+boolean teste = Boolean.parseBoolan("false");
+
+-Converter de inteiro para string
+String teste = String.valueOf(1);
+
+-Converter de double para string
+String teste = String.valueOf(1.2);
+
+-Converter de boolean para string
+String teste = String.valueOf(true);
