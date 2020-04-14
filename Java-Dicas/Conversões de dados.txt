@@ -1,5 +1,5 @@
 -Converter de string para inteiro:
-int teste = Interger.parseInt("27");
+int teste = Integer.parseInt("27");
 
 -Converter de string para double:
 double teste = Double.parseDouble("3.5");
