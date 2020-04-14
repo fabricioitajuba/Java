@@ -23,6 +23,13 @@ public class Main {
         boolean teste;
         BancoSQLite bancoSQLite = new BancoSQLite();
         
+        //Testa o método fazerLogin
+        teste = bancoSQLite.fazerLogin("banco.db", "tbl_senhas", "fabricio", "1234");
+        System.out.println(teste);
+        //login errado:
+        teste = bancoSQLite.fazerLogin("banco.db", "tbl_senhas", "fabricio", "4321");
+        System.out.println(teste);        
+        
         //Cria banco de dados
         teste = bancoSQLite.criarBanco("banco.db");
         System.out.println(teste);

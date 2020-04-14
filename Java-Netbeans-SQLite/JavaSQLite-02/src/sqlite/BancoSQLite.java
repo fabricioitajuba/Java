@@ -328,4 +328,45 @@ public class BancoSQLite {
         return tabelas;
     }         
     
+    //Faz login
+    public boolean fazerLogin(String banco, String tabela, String Login, String Senha){
+        
+        boolean conectar, ok=false;
+        
+        conectar = conectar(banco);
+        
+        if(conectar == true){
+
+            ResultSet resultSet = null;
+            PreparedStatement preparedStatement = null;
+
+            String query = "SELECT * FROM "+tabela+" WHERE login = ? and senha = ?;";
+
+            try{
+                preparedStatement = criarPreparedStatement(query);
+                preparedStatement.setString(1,Login);
+                preparedStatement.setString(2,Senha);
+
+                resultSet = preparedStatement.executeQuery();
+
+                if(resultSet.next()){
+                    ok=true;
+                }
+                
+            }catch (SQLException e){
+                System.out.println(e);
+            }finally{
+                try{
+                    resultSet.close();
+                    preparedStatement.close();
+                    desconectar();
+                }catch(SQLException ex){
+                    ex.printStackTrace();
+                    System.out.println(ex);
+                }
+            }                       
+        }    
+        return ok;                
+    }     
+    
 }
