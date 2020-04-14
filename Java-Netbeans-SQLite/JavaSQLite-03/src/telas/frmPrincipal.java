@@ -67,6 +67,11 @@ public class frmPrincipal extends javax.swing.JFrame {
                 "ID", "Nome", "Idade"
             }
         ));
+        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabela);
 
         btnAlterar.setText("Alterar");
@@ -146,6 +151,13 @@ public class frmPrincipal extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnInserirActionPerformed
+
+    private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
+        if (tabela.getSelectedRow() != -1) {
+            txtNome.setText(tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
+            txtIdade.setText(tabela.getValueAt(tabela.getSelectedRow(), 2).toString());
+        }
+    }//GEN-LAST:event_tabelaMouseClicked
 
     
 //        for(BancoSQLite p: bancoSQLite.buscaDados("banco.db", "tbl_pessoa")){
