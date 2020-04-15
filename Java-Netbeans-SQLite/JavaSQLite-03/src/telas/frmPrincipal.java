@@ -79,6 +79,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnAlterar.setText("Alterar");
 
         btnDeletar.setText("Deletar");
+        btnDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
 
@@ -110,12 +115,12 @@ public class frmPrincipal extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(105, 105, 105)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnDeletar)
-                            .addComponent(btnBuscar)))
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnDeletar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,6 +176,24 @@ public class frmPrincipal extends javax.swing.JFrame {
             txtIdade.setText(tabela.getValueAt(tabela.getSelectedRow(), 2).toString());
         }
     }//GEN-LAST:event_tabelaMouseClicked
+
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        
+        //delete("banco.db", "tbl_pessoa");
+        BancoSQLite bancoSQLite  = new BancoSQLite();
+
+        bancoSQLite.setId(Integer.parseInt(lblId.getText()));
+        
+        if(bancoSQLite.delete("banco.db", "tbl_pessoa")){
+            lblId.setText("");
+            txtNome.setText("");
+            txtIdade.setText("");
+            JOptionPane.showMessageDialog(null, "Item deletado com sucesso!");
+            readJTable();
+        }else{
+            JOptionPane.showMessageDialog(null, "Erro ao deletar!");
+        }        
+    }//GEN-LAST:event_btnDeletarActionPerformed
      
     //Este método, atualiza os dados na tabela
     public void readJTable() {
