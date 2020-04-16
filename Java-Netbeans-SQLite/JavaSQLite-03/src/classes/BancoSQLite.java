@@ -272,12 +272,12 @@ public class BancoSQLite {
                 try{
                     resultSet.close();
                     preparedStatement.close();
-                    desconectar();
                 }catch(SQLException ex){
                     JOptionPane.showMessageDialog(null, "Erro: "+ex);
                     //ex.printStackTrace();
                     ok=false;
                 }
+                desconectar();                
             }                       
         }    
         return ok;                
@@ -286,7 +286,7 @@ public class BancoSQLite {
     //Busca registros e salva em uma lista
     public List<BancoSQLite> buscaNomes(String banco, String tabela){
         
-        boolean conectar, ok=false;
+        boolean conectar;
         
         List<BancoSQLite> tabelas = new ArrayList<>();
         
@@ -295,19 +295,15 @@ public class BancoSQLite {
         if(conectar == true){
 
             ResultSet resultSet = null;
-            //Statement statement = null;
-            PreparedStatement preparedStatement = null;//  
+            PreparedStatement preparedStatement = null;
 
-            //String query = "SELECT * FROM "+tabela+" WHERE nome LIKE '%"+Nome+"%';";
-            String query = "SELECT * FROM "+tabela+" WHERE nome LIKE ?;";//
-            //statement = criarStatement();
+            //String query = "SELECT * FROM "+tabela+" WHERE nome=?;";
+            String query = "SELECT * FROM "+tabela+" WHERE nome LIKE ?;";
 
             try{
-                
-                //resultSet = statement.executeQuery(query);
-                preparedStatement = criarPreparedStatement(query);//
-                preparedStatement.setString(1,"%"+Nome+"%");//     
-                resultSet = preparedStatement.executeQuery();//
+                preparedStatement = criarPreparedStatement(query);
+                preparedStatement.setString(1, "%"+Nome+"%");   
+                resultSet = preparedStatement.executeQuery();
                 
                 while(resultSet.next()){
                     
@@ -319,21 +315,18 @@ public class BancoSQLite {
                     
                     tabelas.add(bancoSQLite);
                 }
-                //ok=true;
             }catch (SQLException e){
                 JOptionPane.showMessageDialog(null, "Erro: "+e);
             }finally{
                 try{
                     resultSet.close();
-                    //statement.close();
-                    preparedStatement.close();//                    
-                    desconectar();
+                    preparedStatement.close();           
                 }catch(SQLException ex){
                     JOptionPane.showMessageDialog(null, "Erro: "+ex);
                 }
+                desconectar();
             }                                              
         }    
-        //return ok;  
         return tabelas;
     }        
     
@@ -375,10 +368,10 @@ public class BancoSQLite {
                 try{
                     resultSet.close();
                     statement.close();
-                    desconectar();
                 }catch(SQLException ex){
                     JOptionPane.showMessageDialog(null, "Erro: "+ex);
                 }
+                desconectar();
             }                                              
         }    
         //return ok;  
@@ -416,12 +409,12 @@ public class BancoSQLite {
                 try{
                     resultSet.close();
                     preparedStatement.close();
-                    desconectar();
                 }catch(SQLException ex){
                     //ex.printStackTrace();
                     JOptionPane.showMessageDialog(null, "Erro: "+ex);
                     System.out.println(ex);
                 }
+                desconectar();
             }                       
         }    
         return ok;                

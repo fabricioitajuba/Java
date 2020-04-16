@@ -105,7 +105,7 @@ public class frmPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -129,7 +129,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnDeletar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -154,7 +154,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                     .addComponent(btnDeletar))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -223,14 +223,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_btnAlterarActionPerformed
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-
-        BancoSQLite bancoSQLite  = new BancoSQLite();
-
-        bancoSQLite.setNome(txtNome.getText());
-        readJTableNomes();
-    }//GEN-LAST:event_btnBuscarActionPerformed
-     
     //Este método, atualiza os dados na tabela
     public void readJTable() {
         
@@ -246,15 +238,21 @@ public class frmPrincipal extends javax.swing.JFrame {
             });
         });
         
-    }    
+    }      
     
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+
+        readJTableNomes();
+    }//GEN-LAST:event_btnBuscarActionPerformed
+         
     //Este método, atualiza os dados na tabela
     public void readJTableNomes() {
         
         DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
         modelo.setNumRows(0);
         BancoSQLite bancoSQLite = new BancoSQLite();
-
+        bancoSQLite.setNome(txtNome.getText());
+        
         for(BancoSQLite p : bancoSQLite.buscaNomes("banco.db", "tbl_pessoa")) {
 
             modelo.addRow(new Object[]{
