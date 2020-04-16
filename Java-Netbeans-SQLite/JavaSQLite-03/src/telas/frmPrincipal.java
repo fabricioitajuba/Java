@@ -77,6 +77,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tabela);
 
         btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         btnDeletar.setText("Deletar");
         btnDeletar.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +91,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Id:");
 
@@ -179,7 +189,6 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
         
-        //delete("banco.db", "tbl_pessoa");
         BancoSQLite bancoSQLite  = new BancoSQLite();
 
         bancoSQLite.setId(Integer.parseInt(lblId.getText()));
@@ -194,6 +203,33 @@ public class frmPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro ao deletar!");
         }        
     }//GEN-LAST:event_btnDeletarActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        
+        BancoSQLite bancoSQLite  = new BancoSQLite();
+
+        bancoSQLite.setId(Integer.parseInt(lblId.getText()));
+        bancoSQLite.setNome(txtNome.getText());
+        bancoSQLite.setIdade(Integer.parseInt(txtIdade.getText()));
+        
+        if(bancoSQLite.update("banco.db", "tbl_pessoa")){
+            lblId.setText("");
+            txtNome.setText("");
+            txtIdade.setText("");
+            JOptionPane.showMessageDialog(null, "Item alterado com sucesso!");
+            readJTable();
+        }else{
+            JOptionPane.showMessageDialog(null, "Erro ao alterar!");
+        } 
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+
+        BancoSQLite bancoSQLite  = new BancoSQLite();
+
+        bancoSQLite.setNome(txtNome.getText());
+        readJTableNomes();
+    }//GEN-LAST:event_btnBuscarActionPerformed
      
     //Este método, atualiza os dados na tabela
     public void readJTable() {
@@ -202,7 +238,24 @@ public class frmPrincipal extends javax.swing.JFrame {
         modelo.setNumRows(0);
         BancoSQLite bancoSQLite = new BancoSQLite();
 
-        for(BancoSQLite p : bancoSQLite.buscaDados("banco.db", "tbl_pessoa")) {
+        bancoSQLite.buscaDados("banco.db", "tbl_pessoa").forEach((p) -> {
+            modelo.addRow(new Object[]{
+                p.getId(),
+                p.getNome(),
+                p.getIdade(),
+            });
+        });
+        
+    }    
+    
+    //Este método, atualiza os dados na tabela
+    public void readJTableNomes() {
+        
+        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+        modelo.setNumRows(0);
+        BancoSQLite bancoSQLite = new BancoSQLite();
+
+        for(BancoSQLite p : bancoSQLite.buscaNomes("banco.db", "tbl_pessoa")) {
 
             modelo.addRow(new Object[]{
                 p.getId(),
@@ -210,7 +263,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 p.getIdade(),
             });
         }
-    }    
+    }     
     /**
      * @param args the command line arguments
      */
