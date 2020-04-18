@@ -24,6 +24,12 @@ public class Main {
         
         BancoMySQL bancoMySQL = new BancoMySQL();
         
+        teste = bancoMySQL.fazerLogin("senhas", "fabricio", "1234");
+        System.out.println(teste);
+        
+        teste = bancoMySQL.fazerLogin("senhas", "fabiano", "4321");
+        System.out.println(teste);        
+        
         bancoMySQL.setId(1);
         bancoMySQL.setNome("Fabricio");
         bancoMySQL.setIdade(20);

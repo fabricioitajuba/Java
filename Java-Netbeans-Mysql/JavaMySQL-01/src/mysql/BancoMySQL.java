@@ -247,5 +247,30 @@ public class BancoMySQL {
         return tabelas;
     }
 
+    //Faz login
+    public boolean fazerLogin(String Tabela, String Login, String Senha){
+
+        Connection con = getConnection();
+        PreparedStatement stmt = null;        
+        ResultSet rs = null;
+        boolean ok = false;
+        
+        try {            
+            stmt = con.prepareStatement("SELECT * FROM "+Tabela+" WHERE login = ? and senha = ?;");
+            stmt.setString(1, Login);
+            stmt.setString(2, Senha);
+            rs = stmt.executeQuery();
+            
+            if(rs.next()){                               
+                ok=true;
+            }
+                    
+        } catch (SQLException ex) {
+            System.out.println("Erro " + ex);
+        } finally{
+            closeConnection(con, stmt, rs);
+        }        
+        return ok;
+    }    
     
 }
