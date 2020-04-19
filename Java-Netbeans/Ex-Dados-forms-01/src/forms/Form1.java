@@ -100,6 +100,7 @@ public class Form1 extends javax.swing.JFrame {
         //Seto os JTextFields que eu tenho no segundo formulário com os valores de minhas variáveis
         janela.lblNome.setText(Nome);
         janela.lblIdade.setText(String.valueOf(Idade));
+        janela.setVar(Idade-1);
         //Abre o segundo form
         janela.setVisible(true);
         //Fecha o corrent form        
