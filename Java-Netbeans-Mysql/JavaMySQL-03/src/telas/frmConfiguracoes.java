@@ -23,9 +23,7 @@ public class frmConfiguracoes extends javax.swing.JFrame {
         String conteudo = Arquivo.Read(ArqConfig);
         txtADRESS.setText(conteudo.split(";")[0]);
         txtPORT.setText(conteudo.split(";")[1]);
-        String USER = conteudo.split(";")[2];
-        String PASS= conteudo.split(";")[3];
-        txtBANK.setText(conteudo.split(";")[4]);       
+        txtBANK.setText(conteudo.split(";")[2]);       
     }
 
     /**

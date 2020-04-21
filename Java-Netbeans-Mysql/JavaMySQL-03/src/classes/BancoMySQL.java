@@ -46,15 +46,13 @@ public class BancoMySQL {
         this.Nome = Nome;
     }
     
-    public static Connection getConnection(){
+    public static Connection getConnection(String USER, String PASS){
     
         String ArqConfig = "conf/conf.con";
         String conteudo = Arquivo.Read(ArqConfig);
         String ADRESS = conteudo.split(";")[0];
         String PORT = conteudo.split(";")[1];
-        String USER = conteudo.split(";")[2];
-        String PASS= conteudo.split(";")[3];
-        String BANK= conteudo.split(";")[4];
+        String BANK= conteudo.split(";")[2];
 
         String DRIVER = "com.mysql.jdbc.Driver";
         String URL = "jdbc:mysql://"+ADRESS+":"+PORT+"/"+BANK;      
@@ -109,9 +107,9 @@ public class BancoMySQL {
     }    
     
     //Inserir dados
-    public boolean Insert(String Tabela){
+    public boolean Insert(String USER, String PASS, String Tabela){
     
-        Connection con = getConnection();
+        Connection con = getConnection(USER, PASS);
         PreparedStatement stmt = null;
         boolean ok = false;
         
@@ -135,9 +133,9 @@ public class BancoMySQL {
     }
 
     //Deletar dado
-    public boolean Delete(String Tabela){
+    public boolean Delete(String USER, String PASS, String Tabela){
     
-        Connection con = getConnection();
+        Connection con = getConnection(USER, PASS);
         PreparedStatement stmt = null;
         boolean ok = false;
         
@@ -166,9 +164,9 @@ public class BancoMySQL {
     }
  
     //Atualizar dados
-    public boolean update(String Tabela){
+    public boolean update(String USER, String PASS, String Tabela){
     
-        Connection con = getConnection();
+        Connection con = getConnection(USER, PASS);
         PreparedStatement stmt = null;
         boolean ok = false;
         
@@ -192,9 +190,9 @@ public class BancoMySQL {
     }      
 
     //Ler dado
-    public boolean buscaDado(String Tabela){
+    public boolean buscaDado(String USER, String PASS, String Tabela){
 
-        Connection con = getConnection();
+        Connection con = getConnection(USER, PASS);
         PreparedStatement stmt = null;        
         ResultSet rs = null;
         boolean ok = false;
@@ -220,9 +218,9 @@ public class BancoMySQL {
     }
     
     //Ler dados
-    public List<BancoMySQL> buscaDados(String Tabela){
+    public List<BancoMySQL> buscaDados(String USER, String PASS, String Tabela){
 
-        Connection con = getConnection();
+        Connection con = getConnection(USER, PASS);
         PreparedStatement stmt = null;        
         ResultSet rs = null;
         
@@ -254,9 +252,9 @@ public class BancoMySQL {
     }
 
     //Busca registros e salva em uma lista
-    public List<BancoMySQL> buscaNomes(String Tabela){
+    public List<BancoMySQL> buscaNomes(String USER, String PASS, String Tabela){
 
-        Connection con = getConnection();
+        Connection con = getConnection(USER, PASS);
         PreparedStatement stmt = null;        
         ResultSet rs = null;
         
@@ -287,31 +285,5 @@ public class BancoMySQL {
         
         return tabelas;
     }    
-    
-    //Faz login
-    public boolean fazerLogin(String Tabela, String Login, String Senha){
-
-        Connection con = getConnection();
-        PreparedStatement stmt = null;        
-        ResultSet rs = null;
-        boolean ok = false;
-        
-        try {            
-            stmt = con.prepareStatement("SELECT * FROM "+Tabela+" WHERE login = ? and senha = ?;");
-            stmt.setString(1, Login);
-            stmt.setString(2, Senha);
-            rs = stmt.executeQuery();
-            
-            if(rs.next()){                               
-                ok=true;
-            }
-                    
-        } catch (SQLException ex) {
-            System.out.println("Erro " + ex);
-        } finally{
-            closeConnection(con, stmt, rs);
-        }        
-        return ok;
-    }    
-    
+           
 }

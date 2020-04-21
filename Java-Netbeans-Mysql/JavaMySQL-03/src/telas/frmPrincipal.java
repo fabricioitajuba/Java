@@ -18,8 +18,27 @@ public class frmPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form frmPrincipal
      */
-    public frmPrincipal() {
+    
+    private String Login, Senha;
 
+    public String getLogin() {
+        return Login;
+    }
+
+    public void setLogin(String Login) {
+        this.Login = Login;
+    }
+
+    public String getSenha() {
+        return Senha;
+    }
+
+    public void setSenha(String Senha) {
+        this.Senha = Senha;
+    }
+      
+    public frmPrincipal() {        
+        
         initComponents();
         readJTable();
     }
@@ -209,7 +228,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         bancoMySQL.setNome(txtNome.getText());
         bancoMySQL.setIdade(Integer.parseInt(txtIdade.getText()));
         
-        if(bancoMySQL.Insert("pessoas")){
+        if(bancoMySQL.Insert(getLogin(), getSenha(), "pessoas")){
             txtNome.setText("");
             txtIdade.setText("");
             JOptionPane.showMessageDialog(null, "Item cadastrado com sucesso!");
@@ -234,7 +253,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         bancoMySQL.setId(Integer.parseInt(lblId.getText()));
         
-        if(bancoMySQL.Delete("pessoas")){
+        if(bancoMySQL.Delete(getLogin(), getSenha(), "pessoas")){
             lblId.setText("");
             txtNome.setText("");
             txtIdade.setText("");
@@ -253,7 +272,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         bancoMySQL.setNome(txtNome.getText());
         bancoMySQL.setIdade(Integer.parseInt(txtIdade.getText()));
         
-        if(bancoMySQL.update("pessoas")){
+        if(bancoMySQL.update(getLogin(), getSenha(), "pessoas")){
             lblId.setText("");
             txtNome.setText("");
             txtIdade.setText("");
@@ -271,7 +290,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         modelo.setNumRows(0);
         BancoMySQL bancoMySQL = new BancoMySQL();
 
-        bancoMySQL.buscaDados("pessoas").forEach((p) -> {
+        bancoMySQL.buscaDados(getLogin(), getSenha(), "pessoas").forEach((p) -> {
             modelo.addRow(new Object[]{
                 p.getId(),
                 p.getNome(),
@@ -293,7 +312,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void MenuOpcoesConfiguracoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuOpcoesConfiguracoesActionPerformed
         
-        new frmConfiguracoes().setVisible(true); //Abre a tela ViewHome
+        new frmConfiguracoes().setVisible(true);
     }//GEN-LAST:event_MenuOpcoesConfiguracoesActionPerformed
          
     //Este método, atualiza os dados na tabela
@@ -304,7 +323,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         BancoMySQL bancoMySQL = new BancoMySQL();
         bancoMySQL.setNome(txtNome.getText());
         
-        for(BancoMySQL p : bancoMySQL.buscaNomes("pessoas")) {
+        for(BancoMySQL p : bancoMySQL.buscaNomes(getLogin(), getSenha(), "pessoas")) {
 
             modelo.addRow(new Object[]{
                 p.getId(),
