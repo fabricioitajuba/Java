@@ -5,9 +5,6 @@
  */
 package telas;
 
-import classes.BancoMySQL;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author fabricio
@@ -95,7 +92,7 @@ public class frmLogin extends javax.swing.JFrame {
 
         janela.setLogin(txtLogin.getText());
         janela.setSenha(txtSenha.getText());
-  
+        
         janela.setVisible(true);        
         this.dispose();  
     }//GEN-LAST:event_btnFazerLoginActionPerformed

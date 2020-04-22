@@ -15,10 +15,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form frmPrincipal
-     */
-    
     private String Login, Senha;
 
     public String getLogin() {
@@ -40,7 +36,19 @@ public class frmPrincipal extends javax.swing.JFrame {
     public frmPrincipal() {        
         
         initComponents();
-        readJTable();
+        
+//        lblNome.disable();
+//        txtNome.enable(false);
+//        lblIdade.enable(false);
+//        txtIdade.enable(false);
+//        lblId.enable(false);
+//        txtId.enable(false);
+//        btnAlterar.enable(false);
+//        btnDeletar.enable(false);
+//        btnInserir.enable(false);
+//        tabela.enable(false);
+        
+        //readJTable();
     }
 
     /**
@@ -54,9 +62,9 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        jLabel1 = new javax.swing.JLabel();
+        lblNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        lblIdade = new javax.swing.JLabel();
         txtIdade = new javax.swing.JTextField();
         btnInserir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -64,10 +72,11 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnAlterar = new javax.swing.JButton();
         btnDeletar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         lblId = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
+        MenuArquivoLogin = new javax.swing.JMenuItem();
         MenuArquivoSair = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         MenuOpcoesConfiguracoes = new javax.swing.JMenuItem();
@@ -80,9 +89,9 @@ public class frmPrincipal extends javax.swing.JFrame {
         setTitle("Sistema de cadastro");
         setResizable(false);
 
-        jLabel1.setText("Nome:");
+        lblNome.setText("Nome:");
 
-        jLabel2.setText("Idade:");
+        lblIdade.setText("Idade:");
 
         btnInserir.setText("Inserir");
         btnInserir.addActionListener(new java.awt.event.ActionListener() {
@@ -127,10 +136,19 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Id:");
+        lblId.setText("Id:");
 
         jMenu3.setMnemonic('A');
         jMenu3.setText("Arquivo");
+
+        MenuArquivoLogin.setMnemonic('L');
+        MenuArquivoLogin.setText("Login");
+        MenuArquivoLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuArquivoLoginActionPerformed(evt);
+            }
+        });
+        jMenu3.add(MenuArquivoLogin);
 
         MenuArquivoSair.setMnemonic('S');
         MenuArquivoSair.setText("Sair");
@@ -174,16 +192,16 @@ public class frmPrincipal extends javax.swing.JFrame {
                                 .addComponent(btnAlterar))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1))
+                                    .addComponent(lblIdade)
+                                    .addComponent(lblNome))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(txtIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(lblId)
+                                        .addGap(3, 3, 3)
+                                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -197,16 +215,15 @@ public class frmPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblNome)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar))
                 .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(txtIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblIdade)
+                    .addComponent(txtIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblId)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnInserir)
@@ -241,7 +258,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
         if (tabela.getSelectedRow() != -1) {
-            lblId.setText(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
+            txtId.setText(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
             txtNome.setText(tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
             txtIdade.setText(tabela.getValueAt(tabela.getSelectedRow(), 2).toString());
         }
@@ -251,10 +268,10 @@ public class frmPrincipal extends javax.swing.JFrame {
         
         BancoMySQL bancoMySQL  = new BancoMySQL();
 
-        bancoMySQL.setId(Integer.parseInt(lblId.getText()));
+        bancoMySQL.setId(Integer.parseInt(txtId.getText()));
         
         if(bancoMySQL.Delete(getLogin(), getSenha(), "pessoas")){
-            lblId.setText("");
+            txtId.setText("");
             txtNome.setText("");
             txtIdade.setText("");
             JOptionPane.showMessageDialog(null, "Item deletado com sucesso!");
@@ -268,12 +285,12 @@ public class frmPrincipal extends javax.swing.JFrame {
         
         BancoMySQL bancoMySQL  = new BancoMySQL();
 
-        bancoMySQL.setId(Integer.parseInt(lblId.getText()));
+        bancoMySQL.setId(Integer.parseInt(txtId.getText()));
         bancoMySQL.setNome(txtNome.getText());
         bancoMySQL.setIdade(Integer.parseInt(txtIdade.getText()));
         
         if(bancoMySQL.update(getLogin(), getSenha(), "pessoas")){
-            lblId.setText("");
+            txtId.setText("");
             txtNome.setText("");
             txtIdade.setText("");
             JOptionPane.showMessageDialog(null, "Item alterado com sucesso!");
@@ -303,6 +320,17 @@ public class frmPrincipal extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
         readJTableNomes();
+        
+//        lblNome.enable();
+//        txtNome.enable(true);
+//        lblIdade.enable(true);
+//        txtIdade.enable(true);
+//        lblId.enable(true);
+//        txtId.enable(true);
+//        btnAlterar.enable(true);
+//        btnDeletar.enable(true);
+//        btnInserir.enable(true);
+//        tabela.enable(true);        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void MenuArquivoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuArquivoSairActionPerformed
@@ -314,6 +342,12 @@ public class frmPrincipal extends javax.swing.JFrame {
         
         new frmConfiguracoes().setVisible(true);
     }//GEN-LAST:event_MenuOpcoesConfiguracoesActionPerformed
+
+    private void MenuArquivoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuArquivoLoginActionPerformed
+                    
+        new frmLogin().setVisible(true); //Abre a tela ViewHome
+        this.dispose(); //Fecha a tela de login
+    }//GEN-LAST:event_MenuArquivoLoginActionPerformed
          
     //Este método, atualiza os dados na tabela
     public void readJTableNomes() {
@@ -368,15 +402,13 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MenuArquivoLogin;
     private javax.swing.JMenuItem MenuArquivoSair;
     private javax.swing.JMenuItem MenuOpcoesConfiguracoes;
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnDeletar;
     private javax.swing.JButton btnInserir;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -384,7 +416,10 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblId;
+    private javax.swing.JLabel lblIdade;
+    private javax.swing.JLabel lblNome;
     private javax.swing.JTable tabela;
+    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtIdade;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables

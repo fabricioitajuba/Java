@@ -1,0 +1,35 @@
+- Instalar o pacote:
+
+sudo apt install gcc
+sudo apt-get install gcj-jdk
+
+Ex - Criar o arquivo BemVindo.java:
+
+// Olá mundo em java. 
+// Arquivo BemVindo.java. 
+public class BemVindo 
+{ 
+    public static void main(String[] args) { 
+    //System.out.println("Olá Mundo!"); 
+    JFrame ventana = new JFrame ();
+
+    ventana.setSize(400,500);
+    ventana.setTitle("Ventana Java, usando Swing");
+    ventana.setVisible(true);
+    } 
+}
+
+- para compilar o arquivo para funcionar com o jvm:
+javac BemVindo.java
+
+- para executar o arquivo:
+java BemVindo
+
+- para compilar para executar de forma nativa:
+gcj --main=BemVindo BemVindo.java -o programanativo
+
+- para saber se o programa foi compilado:
+ldd programanativo
+
+- para executar:
+./programanativo

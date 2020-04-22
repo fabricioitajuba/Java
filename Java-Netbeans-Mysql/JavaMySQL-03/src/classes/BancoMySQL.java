@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -61,6 +62,7 @@ public class BancoMySQL {
             Class.forName(DRIVER);            
             return (Connection) DriverManager.getConnection(URL, USER, PASS);            
         } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro de conexão!");
             throw new RuntimeException("Erro na conexao: ", ex);
         }        
     }
